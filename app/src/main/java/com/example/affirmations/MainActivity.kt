@@ -67,7 +67,22 @@ fun AffirmationsApp() {
     )
 }
 
+/*
+* A Column can only hold a predefined, or fixed, number of composables.
+* A LazyColumn can add content on demand, which makes it good for long
+* lists and particularly when the length of the list is unknown */
 
+@Composable
+fun AffirmarionList(affirmationList: List<Affirmation>, modifier: Modifier = Modifier){
+    LazyColumn(modifier = Modifier){
+        items(affirmationList){affirmation ->
+            AffirmationCard(
+                affirmation = affirmation,
+                modifier = Modifier.padding(8.dp)
+            )
+        }
+    }
+}
 @Composable
 fun AffirmationCard(affirmation: Affirmation, modifier: Modifier = Modifier) { //take an Affirmation object as a parameter. The Affirmation object comes from the model package.
 
